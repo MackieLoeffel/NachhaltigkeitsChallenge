@@ -1,0 +1,10 @@
+{
+  "cmd": "sails.cmd",
+  "name": "sails",
+  "args": [ "lift" ],
+  "sh": false,
+  "errorMatch": [
+    "at.*?(?<file>C:\\\\.*?):(?<line>\\d+)::(?<col>\\d+)",
+    "at.*?(?<file>C:\\\\.*?):(?<line>\\d+):(?<col>\\d+)"
+  ]
+}
