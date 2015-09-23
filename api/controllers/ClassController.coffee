@@ -7,7 +7,7 @@ module.exports =
     ).then(->
       res.forbidden())
 
-  class: (req, res) ->
+  status: (req, res) ->
     Class.find().then (classes) ->
       classes.push
         name: "5B"
