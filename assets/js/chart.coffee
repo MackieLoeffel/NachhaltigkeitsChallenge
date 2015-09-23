@@ -1,12 +1,8 @@
 ctx = document.getElementById("chart").getContext("2d");
-classes = [
+classes = classes.concat [
   {
     name: "6A",
     points: 50
-  }
-  {
-    name: "7A",
-    points: 100
   }
 ]
      
