@@ -11,12 +11,8 @@ data = {
   datasets: [
     {
       label: "Punkte",
-      fillColor: "rgba(11,20,220,0.2)",
-      strokeColor: "rgba(220,98,220,1)",
-      pointColor: "rgba(220,220,220,1)",
-      pointStrokeColor: "#fff",
-      pointHighlightFill: "#fff",
-      pointHighlightStroke: "rgba(220,220,220,1)",
+      strokeColor: "rgba(0,70,224,0.8)",
+      fillColor: "rgba(7,108,240,0.6)",
       data: _.map(classes, "points")
     }
   ]
