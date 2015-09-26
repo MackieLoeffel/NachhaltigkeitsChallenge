@@ -4,8 +4,7 @@ module.exports =
     Class.create(
       name: req.param("name")
       points: req.param("points")
-    ).then(->
-      res.forbidden())
+    ).then(console.log)
 
   status: (req, res) ->
     Class.find().then (classes) ->
