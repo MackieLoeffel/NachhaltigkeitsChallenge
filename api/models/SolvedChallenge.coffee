@@ -3,3 +3,5 @@ module.exports =
     at: "datetime"
     challenge:
       model: "Challenge"
+    class:
+      model: "Class"

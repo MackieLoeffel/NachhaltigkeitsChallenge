@@ -3,3 +3,4 @@ module.exports =
     name: "string"
     challenges:
       collection: "SolvedChallenge"
+      via: "class"
