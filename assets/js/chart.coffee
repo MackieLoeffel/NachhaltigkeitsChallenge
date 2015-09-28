@@ -1,18 +1,19 @@
-ctx = document.getElementById("chart").getContext("2d");
-     
-bar = {
-  labels: _.map(classes, "name")
-  datasets: [
-    {
-      label: "Punkte",
-      strokeColor: "rgba(0,70,224,0.8)",
-      fillColor: "rgba(7,108,240,0.6)",
-      data: _.map(classes, "points").map (p) -> p[p.length - 1]
-    }
-  ]
-}
-# new Chart(ctx).Bar(bar, {});
-if classes.length > 0
+drawBarChart = (classes, barChart) ->
+  bar = {
+    labels: _.map(classes, "name")
+    datasets: [
+      {
+        label: "Punkte",
+        strokeColor: "rgba(0,70,224,0.8)",
+        fillColor: "rgba(7,108,240,0.6)",
+        data: _.map(classes, "points").map (p) -> p[p.length - 1]
+      }
+    ]
+  }
+  new Chart(barChart.getContext("2d")).Bar(bar, {});
+
+drawLineChart = (classes, lineChart) ->
+  console.assert classes.length > 0, "there must be classes!" 
   # - 1 for current date
   numdays = classes[0].points.length - 1
   milliPerDay = 24 * 3600 * 1000
@@ -28,4 +29,4 @@ if classes.length > 0
       }
   }
   console.log line
-  new Chart(ctx).Line(line, {})
+  new Chart(lineChart.getContext("2d")).Line(line, {})

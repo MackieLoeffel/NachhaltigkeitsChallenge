@@ -18,7 +18,7 @@
     <div class="row">
         <fieldset>
             <% for(var i in classes) {
-                var c = classes[i]
+                var c = classes[i];
             %>
             <label>
                 <input type="radio" name="selectedClass" value="<%= c.name  %>"> <%= c.name%>
@@ -69,5 +69,9 @@
     </footer>
 </div> <!-- /container -->
 <script type="text/javascript">
- var classes = <%- JSON.stringify(classes) %>;
+ setTimeout(function() {
+     console.log("Hallo!");
+     var classes = <%- JSON.stringify(classes) %>;
+     drawLineChart(classes, document.getElementById("chart"));
+ }, 10);
 </script>
