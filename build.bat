@@ -1,2 +1,3 @@
 @echo off
-echo 1 | sails console
+rem echo 1 | sails console
+sails lift

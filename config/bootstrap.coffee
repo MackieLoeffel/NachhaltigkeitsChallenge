@@ -9,10 +9,11 @@ module.exports.bootstrap = (cb) ->
       {name: "C2", points: 25}
     ]
   .then ([{id: id1}, {id: id2}]) ->
+    day = 24 * 3600 * 1000 # num milli secs in day
     SolvedChallenge.create [
-      {at: new Date().toISOString(), challenge: id1}
-      {at: new Date().toISOString(), challenge: id1}
-      {at: new Date().toISOString(), challenge: id2}
+      {at: new Date(Date.now() - 0 * day).toISOString(), challenge: id1}
+      {at: new Date(Date.now() - 2 * day).toISOString(), challenge: id2}
+      {at: new Date(Date.now() - 1 * day).toISOString(), challenge: id1}
     ]
   .then ([{id: id1}, {id: id2}, {id: id3}]) ->
     Class.create [
