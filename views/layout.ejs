@@ -40,9 +40,6 @@
 	</head>
 
 	<body>
-		<%- body %>
-
-
 
 		<!--
 		Client-side Templates
@@ -95,12 +92,17 @@
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="http://localhost:35729/livereload.js"></script>
 		<!--SCRIPTS-->
 		<script src="/js/dependencies/sails.io.js"></script>
 		<script src="/js/dependencies/Chart.min.js"></script>
 		<script src="/js/dependencies/lodash.min.js"></script>
 		<script src="/js/chart.js"></script>
 		<!--SCRIPTS END-->
-	</body>
+
+                <!-- must be after included scripts -->
+		<%- body %>
+
+                <!-- must be last thing, because it takes quite long to load (~24 secs) -->
+		<script src="http://localhost:35729/livereload.js"></script>
+        </body>
 </html>

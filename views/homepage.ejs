@@ -21,7 +21,7 @@
                 var c = classes[i];
             %>
             <label>
-                <input type="radio" name="selectedClass" value="<%= c.name  %>"> <%= c.name%>
+                <input type="radio" name="selectedClass" value="<%= c.name  %>" onchange="classChanged()"> <%= c.name%>
             </label>
             <% } %>
         </fieldset>
@@ -69,9 +69,10 @@
     </footer>
 </div> <!-- /container -->
 <script type="text/javascript">
- setTimeout(function() {
-     console.log("Hallo!");
-     var classes = <%- JSON.stringify(classes) %>;
-     drawLineChart(classes, document.getElementById("chart"));
- }, 10);
+ var classes = <%- JSON.stringify(classes) %>;
+ drawLineChart(classes, document.getElementById("chart"));
+
+ function classChanged() {
+     console.log($("input[name=selectedClass]:checked").val());
+ }
 </script>

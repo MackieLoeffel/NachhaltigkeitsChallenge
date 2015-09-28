@@ -28,5 +28,4 @@ drawLineChart = (classes, lineChart) ->
         data: c.points
       }
   }
-  console.log line
   new Chart(lineChart.getContext("2d")).Line(line, {})
