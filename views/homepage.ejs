@@ -70,8 +70,10 @@
 </div> <!-- /container -->
 <script type="text/javascript">
  var classes = <%- JSON.stringify(classes) %>;
+ var challenges = <%- JSON.stringify(challenges) %>;
  drawLineChart(classes, document.getElementById("chart"));
- 
+
+ // load old class from localStorage and fallback if not existent
  var selectedClass = localStorage.getItem("selectedClass");
  if(!selectedClass || !_.findWhere(classes, {name: selectedClass})) {
      selectedClass = $("input[name=selectedClass]").first().val();
