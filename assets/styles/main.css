@@ -8,3 +8,7 @@ body {
     padding-left: 0px;
   }
 }
+
+.selected {
+    background-color: #69F06E;
+}

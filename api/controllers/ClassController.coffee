@@ -5,11 +5,10 @@ numDays = 5
 
 module.exports =
   create: (req, res) ->
-    console.log req.params.all()
+    console.log "params:", req.params.all()
     Class.create(
       name: req.param("name")
-      points: req.param("points")
-    ).then(console.log)
+    ).then(console.log).catch((err) -> console.log "Error:", err)
 
   status: (req, res) ->
     # TODO: better error handling
@@ -33,7 +32,12 @@ module.exports =
               curDate += milliPerDay
             points += challenge.points
           console.assert history.length == numDays + 1, "history should have exactly #{numDays} + 1 entries!"
-          {name: c.name, points: history, solved: _.map c.challenges, "challenge"}
+          {
+            name: c.name
+            points: history
+            solved: _.map(c.challenges, "challenge")
+            id: c.id
+          }
         console.log forClient
         
         res.view "homepage",

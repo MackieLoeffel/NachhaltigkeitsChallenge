@@ -21,19 +21,33 @@
                 var c = classes[i];
             %>
             <label>
-                <input type="radio" name="selectedClass" value="<%= c.name  %>" onchange="classChanged()"> <%= c.name%>
+                <input type="radio" name="selectedClass" value="<%=c.id%>" onchange="classChanged()"> <%= c.name%>
             </label>
             <% } %>
         </fieldset>
     </div>
+    <% for(var i in classes) {
+        var c = classes[i];
+    %>
+    <div class="row class-<%= c.id%>">
+        <div class="col-md-12">
+            <b><%= c.name%>:</b>
+            <%
+            for(var i in challenges) {
+                var chal = challenges[i];
+            %>
+            <%= chal.name%>: <i class="fa fa-<%= (c.solved.indexOf(chal.id) != -1)?"check":"remove" %>"></i>
+            <% } %>
+        </div>
+    </div>
+            <% } %>
     <div class="row">
         <div class="col-md-1">
-            <canvas id="chart" width="500" height="400"></canvas>
+            <canvas id="chart" ></canvas>
         </div>
-        <div style="display:none">
+        <div>
             <form class="form-horizontal" action="/class/create" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
                 <fieldset>
-                    <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="class">Class</label>  
                         <div class="col-md-2">
@@ -42,23 +56,12 @@
                         </div>
                     </div>
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="points">Points</label>  
-                        <div class="col-md-2">
-                            <input id="points" name="points" placeholder="100" class="form-control input-md" required="" type="text">
-                            
-                        </div>
-                    </div>
-
-                    <!-- Button -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="addClass"></label>
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                     </div>
-
                 </fieldset>
             </form>
         </div>
@@ -75,13 +78,24 @@
 
  // load old class from localStorage and fallback if not existent
  var selectedClass = localStorage.getItem("selectedClass");
- if(!selectedClass || !_.findWhere(classes, {name: selectedClass})) {
+ if(!selectedClass || !_.findWhere(classes, {id: +selectedClass})) {
      selectedClass = $("input[name=selectedClass]").first().val();
-     localStorage.setItem("selectedClass", selectedClass)
  }
  $("input[name=selectedClass][value=" + selectedClass + "]").prop("checked", true);
+ setClass(selectedClass);
+
+ function setClass(newClass) {
+     console.log("setClass:", newClass);
+
+     $(".class-" + selectedClass).removeClass("selected");
+
+     selectedClass = newClass;
+     localStorage.setItem("selectedClass", selectedClass);
+
+     $(".class-" + selectedClass).addClass("selected");
+ }
  
  function classChanged() {
-     localStorage.setItem("selectedClass", $("input[name=selectedClass]:checked").val());
+     setClass($("input[name=selectedClass]:checked").val());
  }
 </script>
