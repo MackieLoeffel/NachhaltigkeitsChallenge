@@ -20,7 +20,7 @@
             <% for(var i in classes) {
                 var c = classes[i];
             %>
-            <label>
+            <label class="radio-inline">
                 <input type="radio" name="selectedClass" value="<%=c.id%>" onchange="classChanged()"> <%= c.name%>
             </label>
             <% } %>
@@ -65,6 +65,57 @@
                 </fieldset>
             </form>
         </div>
+        <div>
+            <form class="form-horizontal" action="/class/createChallenge" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="challenge">Challenge</label>  
+                        <div class="col-md-2">
+                            <input id="challenge" name="name" placeholder="Peter" class="form-control input-md" required="" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="points">Points</label>  
+                        <div class="col-md-2">
+                            <input id="points" name="points" placeholder="50" class="form-control input-md" required="" type="number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"></label>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div>
+            <form class="form-horizontal" action="/class/solveChallenge" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 100)">
+                <fieldset>
+                    <input type="hidden" class="class-value" name="selectedClass" value="">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="solvedChallenge">Challenge</label>
+                        <div class="col-md-4">
+                            <select id="solvedChallenge" name="solvedChallenge" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                    <!-- TODO: use datepicker -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="solvedAt">Days ago:</label>  
+                        <div class="col-md-2">
+                            <input id="solvedAt" name="solvedAt" placeholder="1" class="form-control input-md" required="" type="number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"></label>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary">Solve!</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
     </div>
     <hr>
     <footer>
@@ -92,6 +143,18 @@
      selectedClass = newClass;
      localStorage.setItem("selectedClass", selectedClass);
 
+     var solvedSelect = $("#solvedChallenge");
+     solvedSelect.empty(); // remove old options
+     var currentSolved = _.findWhere(classes, {id: +selectedClass}).solved;
+     _.each(challenges.filter(function(c) {
+         return currentSolved.indexOf(c.id) == -1
+     }), function(challenge) {
+         solvedSelect.append($("<option></option>")
+ .attr("value", challenge.id)
+ .text(challenge.name));
+     });
+
+     $(".class-value").val(selectedClass);
      $(".class-" + selectedClass).addClass("selected");
  }
  
