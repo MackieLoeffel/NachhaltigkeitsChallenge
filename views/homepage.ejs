@@ -42,79 +42,68 @@
     </div>
             <% } %>
     <div class="row">
-        <div class="col-md-1">
+        <div class="col-md-4">
             <canvas id="chart" ></canvas>
         </div>
-        <div>
-            <form class="form-horizontal" action="/class/create" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
-                <fieldset>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="class">Class</label>  
-                        <div class="col-md-2">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-inline" action="/class/create" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
+                        <div class="form-group">
+                            <label for="class">Class:</label>  
                             <input id="class" name="name" placeholder="5A" class="form-control input-md" required="" type="text">
-                            
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="addClass"></label>
-                        <div class="col-md-4">
+                        
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary">Add</button>
                         </div>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-        <div>
-            <form class="form-horizontal" action="/class/createChallenge" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
-                <fieldset>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="challenge">Challenge</label>  
-                        <div class="col-md-2">
+                    </form>
+                </div>
+            </div>
+            <div class="row top-margin">
+                <div class="col-md-12">
+                    <form class="form-inline" action="/class/createChallenge" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
+                        <div class="form-group">
+                            <label for="challenge">Challenge:</label>  
                             <input id="challenge" name="name" placeholder="Peter" class="form-control input-md" required="" type="text">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="points">Points</label>  
-                        <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="points">Points:</label>  
                             <input id="points" name="points" placeholder="50" class="form-control input-md" required="" type="number">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label"></label>
-                        <div class="col-md-4">
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary">Add</button>
                         </div>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-        <div>
-            <form class="form-horizontal" action="/class/solveChallenge" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 100)">
-                <fieldset>
-                    <input type="hidden" class="class-value" name="selectedClass" value="">
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="solvedChallenge">Challenge</label>
-                        <div class="col-md-4">
-                            <select id="solvedChallenge" name="solvedChallenge" class="form-control">
-                            </select>
+                    </form>
+                </div>
+            </div>
+            <div class="row top-margin">
+                <form class="form-horizontal" action="/class/solveChallenge" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 100)">
+                    <fieldset>
+                        <input type="hidden" class="class-value" name="selectedClass" value="">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="solvedChallenge">Challenge</label>
+                            <div class="col-md-4">
+                                <select id="solvedChallenge" name="solvedChallenge" class="form-control">
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <!-- TODO: use datepicker -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="solvedAt">Days ago:</label>  
-                        <div class="col-md-2">
-                            <input id="solvedAt" name="solvedAt" placeholder="1" class="form-control input-md" required="" type="number">
+                        <!-- TODO: use datepicker -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="solvedAt">Days ago:</label>  
+                            <div class="col-md-2">
+                                <input id="solvedAt" name="solvedAt" placeholder="1" class="form-control input-md" required="" type="number">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label"></label>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-primary">Solve!</button>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-primary">Solve!</button>
+                            </div>
                         </div>
-                    </div>
-                </fieldset>
-            </form>
+                    </fieldset>
+                </form>
+            </div>
         </div>
     </div>
     <hr>

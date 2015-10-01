@@ -12,3 +12,7 @@ body {
 .selected {
     background-color: #69F06E;
 }
+
+.top-margin {
+    margin-top: 20px;
+}
