@@ -1,5 +1,16 @@
 module.exports.bootstrap = (cb) ->
-  SolvedChallenge.destroy().then ->
+  User.destroy().then ->
+    User.create [
+      name: "hans"
+      password: "1"
+    ]
+  .then ->
+    User.find()
+  .then (users) ->
+    console.log users
+  .then ->
+    SolvedChallenge.destroy()
+  .then ->
     Class.destroy()
   .then ->
     Challenge.destroy()

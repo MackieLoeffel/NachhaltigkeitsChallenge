@@ -32,9 +32,19 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-    '/': "ClassController.status"
+    '/': "ClassController.status",
     
-  /***************************************************************************
+  '/login': {
+    controller: 'AuthController',
+    action: 'login'
+  },
+    
+  '/logout': {
+    controller: 'AuthController',
+    action: 'logout'
+  }
+    
+    /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
   *                                                                          *
