@@ -2,6 +2,7 @@ module.exports.bootstrap = (cb) ->
   User.destroy().then ->
     User.create [
       name: "hans"
+      email: "hans@web.de"
       password: "1"
     ]
   .then ->

@@ -6,9 +6,10 @@ module.exports =
   process: (req, res) ->
     passport.authenticate('local', (err, user, info) ->
       return res.send message: 'login failed' if err or !user
-      req.logIn user, (err) ->
+      req.login user, (err) ->
+        # TODO: is this the correct thing todo?
         res.send err if err
-        res.send message: 'login successful'
+        res.redirect '/' # send message: 'login successful'
       return
     ) req, res
     return

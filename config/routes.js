@@ -32,17 +32,20 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-    '/': "ClassController.status",
+    '/': {
+        controller: "ClassController",
+        action: "status"
+    },
     
-  '/login': {
-    controller: 'AuthController',
-    action: 'login'
-  },
+    '/login': {
+        controller: 'AuthController',
+        action: 'login'
+    },
     
-  '/logout': {
-    controller: 'AuthController',
-    action: 'logout'
-  }
+    '/logout': {
+        controller: 'AuthController',
+        action: 'logout'
+    }
     
     /***************************************************************************
   *                                                                          *

@@ -1,7 +1,6 @@
 module.exports = (req, res, next) ->
-  # User is allowed, proceed to controller
-  is_auth = req.isAuthenticated()
-  if is_auth
+  # every logged in User is at least a teacher
+  if req.isAuthenticated()
     next()
   else
     res.redirect '/login'
