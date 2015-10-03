@@ -100,6 +100,42 @@
 		<script src="/js/chart.js"></script>
 		<!--SCRIPTS END-->
 
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container">
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <% var links = [
+                                    {
+                                        text: "Status",
+                                        path: "/"
+                                    },
+                                    {
+                                        text: "Teacher area",
+                                        path: "/teacher"
+                                    }
+                                ];
+                                if(req.user) {
+                                    links.push({
+                                        text: "Logout",
+                                        path: "/logout"
+                                    });
+                                } else {
+                                    links.push({
+                                        text: "Login",
+                                        path: "/login"
+                                    });
+                                }
+                                for(var link in links) {
+                                    var l = links[link];%>
+                                    
+                                <li <%- (l.path == req.path) ? 'class="active"' : ''%>>
+                                    <a href="<%= l.path%>"><%= l.text%></a>
+                                </li>
+                                <% } %>
+                        </div>
+                    </div>
+                </nav>
+
                 <!-- must be after included scripts -->
 		<%- body %>
 

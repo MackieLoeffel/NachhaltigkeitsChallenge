@@ -9,13 +9,13 @@ module.exports =
       req.login user, (err) ->
         # TODO: is this the correct thing todo?
         res.send err if err
-        res.redirect '/' # send message: 'login successful'
+        res.redirect '/'
       return
     ) req, res
     return
   logout: (req, res) ->
     req.logout()
-    res.send 'logout successful'
+    res.redirect '/'
     return
 
 module.exports.blueprints =

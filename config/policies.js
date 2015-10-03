@@ -21,6 +21,10 @@ module.exports.policies = {
 
     // '*': true,
     ClassController: {
+        '*': true
+    },
+    
+    TeacherController: {
         '*': 'teacherAuth'
     }
 

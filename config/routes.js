@@ -36,7 +36,12 @@ module.exports.routes = {
         controller: "ClassController",
         action: "status"
     },
-    
+
+    '/teacher': {
+        controller: "TeacherController",
+        action: "page"
+    },
+
     '/login': {
         controller: 'AuthController',
         action: 'login'

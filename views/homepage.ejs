@@ -1,19 +1,20 @@
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-        </div><!--/.navbar-collapse -->
-    </div>
-</nav>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-2"></div>
         <div class="col-xs-8"><h1>Change!</h1></div>
         <div class="col-xs-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <%
+            if(req.user) {
+            %>
+                Logged in as: <b><%= req.user.name %></b>
+                <a href="/logout">Logout</a>
+            <% } else {%>
+                Not logged in! <a href="/login">Login here</a>
+            <%}%>
+        </div>
     </div>
     <div class="row">
         <fieldset>
@@ -48,7 +49,7 @@
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-12">
-                    <form class="form-inline" action="/class/create" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
+                    <form class="form-inline" action="/teacher/createClass" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
                         <div class="form-group">
                             <label for="class">Class:</label>  
                             <input id="class" name="name" placeholder="5A" class="form-control input-md" required="" type="text">
@@ -62,7 +63,7 @@
             </div>
             <div class="row top-margin">
                 <div class="col-md-12">
-                    <form class="form-inline" action="/class/createChallenge" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
+                    <form class="form-inline" action="/teacher/createChallenge" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
                         <div class="form-group">
                             <label for="challenge">Challenge:</label>  
                             <input id="challenge" name="name" placeholder="Peter" class="form-control input-md" required="" type="text">
@@ -78,7 +79,7 @@
                 </div>
             </div>
             <div class="row top-margin">
-                <form class="form-horizontal" action="/class/solveChallenge" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 100)">
+                <form class="form-horizontal" action="/teacher/solveChallenge" method="post" onsubmit="setTimeout(function () { window.location.reload(); }, 100)">
                     <fieldset>
                         <input type="hidden" class="class-value" name="selectedClass" value="">
                         <div class="form-group">
