@@ -100,6 +100,7 @@
 		<script src="/js/chart.js"></script>
 		<!--SCRIPTS END-->
 
+                <!-- navbar -->
                 <nav class="navbar navbar-inverse navbar-fixed-top">
                     <div class="container">
                         <div id="navbar" class="navbar-collapse collapse">
@@ -115,7 +116,8 @@
                                     },
                                     {
                                         text: "Admin",
-                                        path: "/admin"
+                                        path: "/admin",
+                                        onlyAdmin: true
                                     }
                                 ];
                                 if(req.user) {
@@ -130,7 +132,10 @@
                                     });
                                 }
                                 for(var link in links) {
-                                    var l = links[link];%>
+                                    var l = links[link];
+                                    if(l.onlyAdmin && (!req.user || !req.user.isAdmin))
+                                      continue;
+                                %>
                                     
                                 <li <%- (l.path == req.path) ? 'class="active"' : ''%>>
                                     <a href="<%= l.path%>"><%= l.text%></a>
