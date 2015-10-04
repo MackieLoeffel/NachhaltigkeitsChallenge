@@ -1,9 +1,17 @@
 module.exports.bootstrap = (cb) ->
   User.destroy().then ->
     User.create [
-      name: "hans"
-      email: "hans@web.de"
-      password: "1"
+      {
+        name: "hans"
+        email: "hans@web.de"
+        password: "1"
+      }
+      {
+        name: "admin"
+        email: "admin@b.de"
+        password: "admin"
+        isAdmin: true
+      }
     ]
   .then ->
     User.find()

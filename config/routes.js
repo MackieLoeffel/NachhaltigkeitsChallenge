@@ -41,6 +41,11 @@ module.exports.routes = {
         controller: "TeacherController",
         action: "page"
     },
+    
+    '/admin': {
+        controller: "AdminController",
+        action: "page"
+    },
 
     '/login': {
         controller: 'AuthController',

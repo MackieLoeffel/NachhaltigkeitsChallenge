@@ -7,8 +7,11 @@ module.exports =
     passport.authenticate('local', (err, user, info) ->
       return res.send message: 'login failed' if err or !user
       req.login user, (err) ->
-        # TODO: is this the correct thing todo?
-        res.send err if err
+        if err
+          console.log "Error login: ", err
+          return res.serverError()
+
+        # TODO: redirect somewhere useful?
         res.redirect '/'
       return
     ) req, res
@@ -18,6 +21,7 @@ module.exports =
     res.redirect '/'
     return
 
+# TODO: useful?
 module.exports.blueprints =
   actions: true
   rest: true

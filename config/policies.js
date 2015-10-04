@@ -26,6 +26,10 @@ module.exports.policies = {
     
     TeacherController: {
         '*': 'teacherAuth'
+    },
+
+    AdminController: {
+        '*': 'adminAuth'
     }
 
   /***************************************************************************
