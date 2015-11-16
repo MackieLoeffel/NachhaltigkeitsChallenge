@@ -1,3 +1,3 @@
-# change
+# Nachhaltigkeits Challenge
 
-a [Sails](http://sailsjs.org) application
+Website for a project by [CHANGE](http://www.chancengestalten.de/)
