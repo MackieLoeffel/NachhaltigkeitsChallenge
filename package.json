@@ -34,8 +34,8 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Michael/change.git"
+    "url": "git://github.com:MackieLoeffel/NachhaltigkeitsChallenge.git"
   },
-  "author": "Michael",
-  "license": ""
+  "author": "Michael Sammler",
+  "license": "MIT"
 }
